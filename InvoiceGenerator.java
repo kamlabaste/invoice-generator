@@ -4,21 +4,22 @@ import java.time.format.DateTimeFormatter;
 /**
  * I N F 1 1 2 0
  *
- * InvoiceGenerator : Cette classe calcule et affiche les informations saisies d'une facture de toiture et du nombre total
- *       des recouvrements selon l'option choisie.
+ * InvoiceGenerator : Cette classe calcule et affiche les informations saisies
+ * d'une facture de toiture et du nombre total
+ * des recouvrements selon l'option choisie.
  * 
- * @author Kameha Dylan Labaste-Nauta 
+ * @author Kameha Dylan Labaste-Nauta
  * @version 25 octobre 2022
  *
- * LABK02049404
- * kg691119@ens.uqam.ca
+ *          LABK02049404
+ *          kg691119@ens.uqam.ca
  */
 
 public class InvoiceGenerator {
 
     // Autres méthodes s'il y a lieu
 
-    public static void main (String[] params) {
+    public static void main(String[] params) {
 
         // Déclaration des constantes
         final float TAUX_TPS = 0.05f;
@@ -73,7 +74,7 @@ public class InvoiceGenerator {
         double totalMontantRecouvrement = 0;
         int nombreRecouvrement = 0;
 
-        // Ajout de la date du jour pour la facture 
+        // Ajout de la date du jour pour la facture
         LocalDateTime dateHeureSysteme = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
@@ -87,7 +88,8 @@ public class InvoiceGenerator {
             // Affichage de la sélection des choix du menu
             System.out.println("\n    *** Menu de choix ***");
             System.out.println("    1. Facturer le recouvrement d'une toiture.");
-            System.out.println("    2. Afficher le nombre de recouvrements et le montant total de tous les recouvrements.");
+            System.out.println(
+                    "    2. Afficher le nombre de recouvrements et le montant total de tous les recouvrements.");
             System.out.println("    3. Quitter le programme.");
             System.out.print("\nEntrez votre choix : ");
             choixMenu = Clavier.lireCharLn();
@@ -96,7 +98,8 @@ public class InvoiceGenerator {
                 System.out.println("\nEntrée invalide !");
                 System.out.println("\n  *** Menu de choix ***");
                 System.out.println("    1. Facturer le recouvrement d'une toiture.");
-                System.out.println("    2. Afficher le nombre de recouvrements et le montant total de tous les recouvrements.");
+                System.out.println(
+                        "    2. Afficher le nombre de recouvrements et le montant total de tous les recouvrements.");
                 System.out.println("    3. Quitter le programme.");
                 System.out.print("\nEntrez votre choix : ");
                 choixMenu = Clavier.lireCharLn();
@@ -132,30 +135,32 @@ public class InvoiceGenerator {
                 // Choix du type de couverture
                 if (typeToit == TYPE_TOIT_PLAT) {
                     System.out.print("\nEntrez le type de couverture ( 1 pour la membrane élastomère," +
-                        " 2 pour la membrane TPO," +
-                        " 3 pour la membrane EPDM," +
-                        " ou 4 pour le multicouche gravier et bitume) : ");
-                    choixTypeCouvertureToit = Clavier.lireCharLn();
-
-                    while (choixTypeCouvertureToit != '1' && choixTypeCouvertureToit != '2' && choixTypeCouvertureToit != '3' && choixTypeCouvertureToit != '4') {
-                        System.out.println("\nEntrée invalide !");
-                        System.out.print("\nEntrez le type de couverture ( 1 pour la membrane élastomère," +
                             " 2 pour la membrane TPO," +
                             " 3 pour la membrane EPDM," +
                             " ou 4 pour le multicouche gravier et bitume) : ");
+                    choixTypeCouvertureToit = Clavier.lireCharLn();
+
+                    while (choixTypeCouvertureToit != '1' && choixTypeCouvertureToit != '2'
+                            && choixTypeCouvertureToit != '3' && choixTypeCouvertureToit != '4') {
+                        System.out.println("\nEntrée invalide !");
+                        System.out.print("\nEntrez le type de couverture ( 1 pour la membrane élastomère," +
+                                " 2 pour la membrane TPO," +
+                                " 3 pour la membrane EPDM," +
+                                " ou 4 pour le multicouche gravier et bitume) : ");
                         choixTypeCouvertureToit = Clavier.lireCharLn();
                     }
                 } else {
                     System.out.print("\nEntrez le type de couverture ( 5 pour le bardeau en asphalte," +
-                        " 6 pour la tôle," +
-                        " 7 pour l'ardoise.) : ");
-                    choixTypeCouvertureToit = Clavier.lireCharLn();
-
-                    while (choixTypeCouvertureToit != '5' && choixTypeCouvertureToit != '6' && choixTypeCouvertureToit != '7') {
-                        System.out.println("\nEntrée invalide !");
-                        System.out.print("\nEntrez le type de couverture ( 5 pour le bardeau en asphalte," +
                             " 6 pour la tôle," +
                             " 7 pour l'ardoise.) : ");
+                    choixTypeCouvertureToit = Clavier.lireCharLn();
+
+                    while (choixTypeCouvertureToit != '5' && choixTypeCouvertureToit != '6'
+                            && choixTypeCouvertureToit != '7') {
+                        System.out.println("\nEntrée invalide !");
+                        System.out.print("\nEntrez le type de couverture ( 5 pour le bardeau en asphalte," +
+                                " 6 pour la tôle," +
+                                " 7 pour l'ardoise.) : ");
                         choixTypeCouvertureToit = Clavier.lireCharLn();
                     }
                 }
@@ -181,7 +186,7 @@ public class InvoiceGenerator {
                         dureeVieCouverture = DUREE_VIE_GRAVIER_BITUME;
                         prixPiedCarre = PRIX_GRAVIER_BITUME;
                         break;
-                    case '5' :
+                    case '5':
                         typeCouvertureToit = TYPE_COUVERTURE_ASPHALTE;
                         dureeVieCouverture = DUREE_VIE_ASPHALTE;
                         prixPiedCarre = PRIX_ASPHALTE;
@@ -210,24 +215,23 @@ public class InvoiceGenerator {
 
                 // Choix du mode de paiement
                 System.out.print("\nEntrez le mode de paiement (s ou S pour Cash, d ou D pour Débit," +
-                    " et c ou C pour Crédit) : ");
+                        " et c ou C pour Crédit) : ");
                 choixModePaiement = Clavier.lireCharLn();
 
-                while (choixModePaiement != 's' && choixModePaiement != 'S' && choixModePaiement != 'd' && choixModePaiement != 'D' 
-                && choixModePaiement != 'c' && choixModePaiement != 'C') {
+                while (choixModePaiement != 's' && choixModePaiement != 'S' && choixModePaiement != 'd'
+                        && choixModePaiement != 'D'
+                        && choixModePaiement != 'c' && choixModePaiement != 'C') {
                     System.out.println("\nEntrée invalide !");
                     System.out.print("\nEntrez le mode de paiement (s ou S pour Cash, d ou D pour Débit," +
-                        " et c ou C pour Crédit) : ");
+                            " et c ou C pour Crédit) : ");
                     choixModePaiement = Clavier.lireCharLn();
                 }
 
-                if (choixModePaiement == 's' || choixModePaiement == 'S'){
+                if (choixModePaiement == 's' || choixModePaiement == 'S') {
                     modePaiement = PAIEMENT_CASH;
-                }
-                else if (choixModePaiement == 'd' || choixModePaiement == 'D'){
+                } else if (choixModePaiement == 'd' || choixModePaiement == 'D') {
                     modePaiement = PAIEMENT_DEBIT;
-                }
-                else {
+                } else {
                     modePaiement = PAIEMENT_CREDIT;
                 }
 
@@ -238,16 +242,21 @@ public class InvoiceGenerator {
                 totalFacture = totalAvantTaxes + montantTPS + montantTVQ;
                 numeroFacture += 1;
 
-                // Calcul du nombre et montant total des recouvrements pour sauvegarder dans le 2ème choix du menu
+                // Calcul du nombre et montant total des recouvrements pour sauvegarder dans le
+                // 2ème choix du menu
                 totalMontantRecouvrement = totalFacture + totalMontantRecouvrement;
                 nombreRecouvrement = numeroFacture;
 
                 // Affichage de la facture
-                System.out.println("\n------------------------------------------------------------------------------------");
+                System.out.println(
+                        "\n------------------------------------------------------------------------------------");
                 System.out.println("    Toiture-Pour-Tous");
-                System.out.println("    Facture no: " + numeroFacture + "                Date et Heure : " + dateHeureSysteme.format(formatter));
-                System.out.println("------------------------------------------------------------------------------------");
-                System.out.printf("\n    Nom et prénom : %s %s            Téléphone : %s", nomClient, prenomClient, telephoneClient);
+                System.out.println("    Facture no: " + numeroFacture + "                Date et Heure : "
+                        + dateHeureSysteme.format(formatter));
+                System.out.println(
+                        "------------------------------------------------------------------------------------");
+                System.out.printf("\n    Nom et prénom : %s %s            Téléphone : %s", nomClient, prenomClient,
+                        telephoneClient);
                 System.out.println("\n    Adresse du client : " + adresseClient);
                 System.out.println("    Type de toit : " + typeToit);
                 System.out.println("    Type de couverture : " + typeCouvertureToit);
@@ -264,18 +273,23 @@ public class InvoiceGenerator {
             }
 
             // Menu choix numéro 2 : Affichage du nombre et montant total des recouvrements
-            else if (choixMenu == '2'){
+            else if (choixMenu == '2') {
 
                 // Affichage du nombre et montant total des recouvrements
-                System.out.println("\n------------------------------------------------------------------------------------");
+                System.out.println(
+                        "\n------------------------------------------------------------------------------------");
                 System.out.println("    Toiture-Pour-Tous");
                 System.out.println("    Date et Heure : " + dateHeureSysteme.format(formatter));
-                System.out.println("------------------------------------------------------------------------------------");
+                System.out.println(
+                        "------------------------------------------------------------------------------------");
                 System.out.println("\n");
-                System.out.println("    Le nombre de recouvrements                                   " + nombreRecouvrement);
-                System.out.printf("    Le montant total de toutes les installations                 %.2f $",totalMontantRecouvrement);
+                System.out.println(
+                        "    Le nombre de recouvrements                                   " + nombreRecouvrement);
+                System.out.printf("    Le montant total de toutes les installations                 %.2f $",
+                        totalMontantRecouvrement);
                 System.out.println("\n");
-                System.out.println("\n------------------------------------------------------------------------------------");
+                System.out.println(
+                        "\n------------------------------------------------------------------------------------");
             }
 
             // Menu choix numéro 3 : arrêt du programme
