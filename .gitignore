@@ -15,8 +15,8 @@
 *.dmg
 *.gz
 *.iso
-!Clavier.jar
 *.jar
+!*/Clavier.jar
 *.rar
 *.tar
 *.zip
